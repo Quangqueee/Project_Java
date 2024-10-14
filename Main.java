@@ -27,7 +27,8 @@ public class Main {
             System.out.println("|3. Dat phong         |");
             System.out.println("|4. Quan ly dich vu   |");
             System.out.println("|5. Thanh toan        |");
-            System.out.println("|6.      Thoat        |");
+            System.out.println("|6. Quan ly nhan vien |");
+            System.out.println("|7.      Thoat        |");
             System.out.println("|---------------------|");
             System.out.print("Nhap vao chuc nang: ");
             int ChucNang = sc.nextInt();
@@ -90,7 +91,7 @@ public class Main {
                             System.out.println("Khong tim thay khach hang");
                         }
                     } else if (QLKH == 4) {
-                        System.out.print("Nhap tu khoa (ten/sdt/cccd) de tim khach hang can xoa: ");
+                        System.out.print("Nhap tu khoa (ten/sdt/cccd) tim khach hang can xoa: ");
                         String key = sc.nextLine();
                         KhachHang KhachHang = QuanLyKhachHang.TimKiemKhachHang(key);
 
@@ -116,32 +117,32 @@ public class Main {
                         System.out.println("Nhap so phong:");
                         String SoPhong = sc.nextLine();
                         System.out.println("Nhap loai phong moi:");
-                        String loaiPhongMoi = sc.nextLine();
-                        QuanLyPhong.SuaPhong(SoPhong, loaiPhongMoi);
+                        String LoaiPhongMoi = sc.nextLine();
+                        QuanLyPhong.SuaPhong(SoPhong, LoaiPhongMoi);
                     }
                     break;
 
                 // Dat Phong
                 case 3:
-                    System.out.print("Nhap ten khach hang:");
-                    String tenkhach = sc.nextLine();
-                    System.out.print("Nhap so dien thoai khach hang:");
+                    System.out.print("Nhap ten khach hang: ");
+                    String ten = sc.nextLine();
+                    System.out.print("Nhap sdt khach hang: ");
                     String sdt = sc.nextLine();
-                    System.out.print("Nhap so CCCD khach hang:");
+                    System.out.print("Nhap so CCCD khach hang: ");
                     String cccd = sc.nextLine();
 
-                    System.out.print("Nhap so phong muon dat:");
+                    System.out.print("Nhap so phong muon dat: ");
                     String SoPhongDat = sc.nextLine();
                     Phong PhongDat = QuanLyPhong.TimPhong(SoPhongDat);
 
                     if (PhongDat != null && PhongDat.getTrangThai().equals("Trong")) {
                         PhongDat.setTrangThai("Full");
 
-                        KhachHang khachDatPhong = new KhachHang(tenkhach, sdt, cccd);
+                        KhachHang khachDatPhong = new KhachHang(ten, sdt, cccd);
                         QuanLyKhachHang.ThemKhachHang(khachDatPhong);
 
                         khachDatPhong.ThemLichSuDatPhong("Phong " + SoPhongDat);
-                        System.out.println("Dat phong thanh cong cho khach hang: " + tenkhach);
+                        System.out.println("Dat phong thanh cong cho khach hang: " + ten);
                     } else {
                         System.out.println("Phong khong kha dung!");
                     }
@@ -222,10 +223,11 @@ public class Main {
                         System.out.println("Khong tim thay khach hang.");
                     }
                     break;
-
+                
                 case 6:
                     System.out.println("Thoat chuong trinh.");
                     System.exit(0);
+
                 default:
                     System.out.println("Chuc nang khong le, vui long thu lai!.");
             }

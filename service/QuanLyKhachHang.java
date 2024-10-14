@@ -20,7 +20,8 @@ public class QuanLyKhachHang {
     }
 
     public KhachHang TimKiemKhachHang(String Key) {
-        for (KhachHang kh : DanhSachKhachHang) {
+        for (int i = 0; i < DanhSachKhachHang.size(); i++) {
+            KhachHang kh = DanhSachKhachHang.get(i);
             if (kh.getTen().toLowerCase().contains(Key.toLowerCase())
                     || kh.getSDT().contains(Key)
                     || kh.getCCCD().contains(Key)) {
@@ -30,11 +31,11 @@ public class QuanLyKhachHang {
         return null;
     }
 
-    // Sửa thông tin khách hàng
-    public void SuaKhachHang(String Key, String TenMoi, String sdtMoi, String cccdMoi) {
+
+    public void SuaKhachHang(String Key, String tenMoi, String sdtMoi, String cccdMoi) {
         KhachHang KhachHang = TimKiemKhachHang(Key);
         if (KhachHang != null) {
-            KhachHang.setTen(TenMoi);
+            KhachHang.setTen(tenMoi);
             KhachHang.setSDT(sdtMoi);
             KhachHang.setCCCD(cccdMoi);
             System.out.println("Cap nhat thong tin khach hang thanh cong.");
