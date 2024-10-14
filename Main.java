@@ -124,7 +124,7 @@ public class Main {
                 // Dat Phong
                 case 3:
                     System.out.print("Nhap ten khach hang:");
-                    String TenKhach = sc.nextLine();
+                    String tenkhach = sc.nextLine();
                     System.out.print("Nhap so dien thoai khach hang:");
                     String sdt = sc.nextLine();
                     System.out.print("Nhap so CCCD khach hang:");
@@ -137,11 +137,11 @@ public class Main {
                     if (PhongDat != null && PhongDat.getTrangThai().equals("Trong")) {
                         PhongDat.setTrangThai("Full");
 
-                        KhachHang khachDatPhong = new KhachHang(TenKhach, sdt, cccd);
+                        KhachHang khachDatPhong = new KhachHang(tenkhach, sdt, cccd);
                         QuanLyKhachHang.ThemKhachHang(khachDatPhong);
 
                         khachDatPhong.ThemLichSuDatPhong("Phong " + SoPhongDat);
-                        System.out.println("Dat phong thanh cong cho khach hang: " + TenKhach);
+                        System.out.println("Dat phong thanh cong cho khach hang: " + tenkhach);
                     } else {
                         System.out.println("Phong khong kha dung!");
                     }
