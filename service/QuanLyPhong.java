@@ -42,7 +42,7 @@ public class QuanLyPhong {
             if (tenkhach.matches("[a-zA-Z\\s]{1,50}")) {
                 break;
             } else {
-                System.out.println("Ten khong hop le! Vui long nhap lai.");
+                System.out.println("\nTen khong hop le! Vui long nhap lai.\n");
             }
         }
 
@@ -51,16 +51,16 @@ public class QuanLyPhong {
 
         KhachHang KhachHang;
         if (KetQua.isEmpty()) {
-            System.out.println("Khach Hang Chua Co Trong He Thong. Tao Moi Khach Hang.");
+            System.out.println("\nKhach Hang Chua Co Trong He Thong. Tao Moi Khach Hang.");
 
             String sdt;
             while (true) {
-                System.out.print("Nhap so dien thoai: ");
+                System.out.print("\nNhap so dien thoai: ");
                 sdt = sc.nextLine();
                 if (sdt.matches("0\\d{9}")) {
                     break;
                 } else {
-                    System.out.println("So dien thoai khong hop le! Vui long nhap lai.");
+                    System.out.println("\nSo dien thoai khong hop le! Vui long nhap lai.\n");
                 }
             }
 
@@ -71,7 +71,7 @@ public class QuanLyPhong {
                 if (cccd.matches("\\d{12}")) {
                     break;
                 } else {
-                    System.out.println("So CCCD khong hop le! Vui long nhap lai.");
+                    System.out.println("\nSo CCCD khong hop le! Vui long nhap lai.\n");
                 }
             }
 
@@ -81,19 +81,19 @@ public class QuanLyPhong {
         } else {
             // Nếu có nhiều kết quả, yêu cầu chọn khách hàng cụ thể
             if (KetQua.size() > 1) {
-                System.out.println("Co nhieu khach hang khop voi ten: ");
+                System.out.println("\nCo nhieu khach hang khop voi ten:\n");
                 for (int i = 0; i < KetQua.size(); i++) {
                     KhachHang kh = KetQua.get(i);
                     System.out.println((i + 1) + ". " + kh.getTen() +
                             " - SDT: " + kh.getSDT() +
                             " - CCCD: " + kh.getCCCD());
                 }
-                System.out.print("Chon khach hang (so thu tu): ");
+                System.out.print("\nChon khach hang (so thu tu): ");
                 int chon = sc.nextInt();
                 sc.nextLine();
 
                 if (chon < 1 || chon > KetQua.size()) {
-                    System.out.println("Lua chon khong hop le.");
+                    System.out.println("\nLua chon khong hop le.");
                     return;
                 }
                 KhachHang = KetQua.get(chon - 1);
@@ -109,10 +109,10 @@ public class QuanLyPhong {
 
         if (PhongDat != null && PhongDat.getTrangThai().equals("Trong")) {
             PhongDat.setTrangThai("Full");
-            System.out.println("Dat Phong Thanh Cong. Phong: " + PhongDat.getSoPhong());
+            System.out.println("\nDat Phong Thanh Cong. Phong: " + PhongDat.getSoPhong());
             KhachHang.ThemPhongDaThue(SoPhong); // Cập nhật lịch sử phòng đã thuê
         } else {
-            System.out.println("Phong Khong Kha Dung Hoac Da Duoc Dat.");
+            System.out.println("\nPhong Khong Kha Dung Hoac Da Duoc Dat.");
         }
     }
 
@@ -126,7 +126,7 @@ public class QuanLyPhong {
     }
 
     public void SuaPhong() {
-        System.out.print("Nhap So Phong Can Sua: ");
+        System.out.print("\nNhap So Phong Can Sua: ");
         String SoPhong = sc.nextLine();
         Phong PhongCanSua = TimPhong(SoPhong);
 
@@ -134,38 +134,38 @@ public class QuanLyPhong {
             System.out.print("Nhap Loai Phong Moi: ");
             String LoaiPhongMoi = sc.nextLine();
             PhongCanSua.setLoaiPhong(LoaiPhongMoi);
-            System.out.println("Cap Nhat Loai Phong Thanh Cong.");
+            System.out.println("\nCap Nhat Loai Phong Thanh Cong.");
         } else {
-            System.out.println("Khong Tim Thay Phong.");
+            System.out.println("\nKhong Tim Thay Phong.");
         }
     }
 
     public void CapNhatTrangThaiPhong() {
-        System.out.print("Nhap So Phong Can Cap Nhat Trang Thai: ");
+        System.out.print("\nNhap So Phong Can Cap Nhat Trang Thai: ");
         String SoPhong = sc.nextLine();
         Phong PhongCanCapNhat = TimPhong(SoPhong);
 
         if (PhongCanCapNhat != null) {
-            System.out.print("Nhap Trang Thai Moi (Trong/Full): ");
+            System.out.print("\nNhap Trang Thai Moi (Trong/Full): ");
             String TrangThaiMoi = sc.nextLine();
             PhongCanCapNhat.setTrangThai(TrangThaiMoi);
-            System.out.println("Cap Nhat Trang Thai Thanh Cong.");
+            System.out.println("\nCap Nhat Trang Thai Thanh Cong.");
         } else {
-            System.out.println("Khong Tim Thay Phong.");
+            System.out.println("\nKhong Tim Thay Phong.");
         }
     }
 
     public void MenuQuanLyPhong() {
         while (true) {
             System.out.println("\n|------------------------|");
-            System.out.println("| Quan Ly Phong          |");
+            System.out.println("|     Quan Ly Phong      |");
             System.out.println("|------------------------|");
             System.out.println("| 1. Xem Trang Thai Phong|");
             System.out.println("| 2. Sua Loai Phong      |");
             System.out.println("| 3. Cap Nhat Trang Thai |");
             System.out.println("| 4. Quay Lai            |");
             System.out.println("|------------------------|");
-            System.out.print("Chon Chuc Nang: ");
+            System.out.print("\nChon Chuc Nang: ");
             int Chon = sc.nextInt();
             sc.nextLine();
 
@@ -180,10 +180,10 @@ public class QuanLyPhong {
                     CapNhatTrangThaiPhong();
                     break;
                 case 4:
-                    System.out.println("Quay Lai Menu Chinh.");
+                    System.out.println("\nQuay Lai Menu Chinh.");
                     return;
                 default:
-                    System.out.println("Chuc Nang Khong Hop Le.");
+                    System.out.println("\nChuc Nang Khong Hop Le.");
             }
         }
     }
