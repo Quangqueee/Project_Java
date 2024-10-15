@@ -116,7 +116,7 @@ public class QuanLyNhanVien {
             return;
         }
 
-        System.out.printf("%-5s %-20s %-5s %-15s %-12s %-11s %-15s %-10s %-20s\n",
+        System.out.printf("\n%-5s %-20s %-5s %-15s %-12s %-11s %-15s %-10s %-20s\n",
                 "STT", "Ten", "Tuoi", "Que Quan", "CCCD", "SDT", "Ngay Sinh", "HSL", "Bo Phan");
 
         System.out.println(
