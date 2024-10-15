@@ -120,7 +120,7 @@ public class QuanLyNhanVien {
                 "STT", "Ten", "Tuoi", "Que Quan", "CCCD", "SDT", "Ngay Sinh", "HSL", "Bo Phan");
 
         System.out.println(
-                "------------------------------------------------------------------------------------------------------");
+                "------------------------------------------------------------------------------------------------------------");
 
         for (int i = 0; i < DanhSachNhanVien.size(); i++) {
             NhanVien nv = DanhSachNhanVien.get(i);
