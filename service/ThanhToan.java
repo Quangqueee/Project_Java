@@ -11,16 +11,15 @@ public class ThanhToan {
     private Scanner sc = new Scanner(System.in);
 
     public void MenuThanhToan(QuanLyKhachHang QuanLyKhachHang, QuanLyPhong QuanLyPhong, QuanLyDichVu QuanLyDichVu) {
-        System.out.println("--------Thanh Toan--------");
-
-        System.out.print("Nhap Ten Khach Hang: ");
+        System.out.println("\n--------Thanh Toan--------");
+        System.out.print("\nNhap Ten Khach Hang: ");
         String TenKhachHang;
         while (true) {
             TenKhachHang = sc.nextLine();
             if (TenKhachHang.matches("[a-zA-Z\\s]{1,50}")) {
                 break;
             } else {
-                System.out.println("Ten khong hop le. Vui long nhap lai.");
+                System.out.println("\nTen khong hop le. Vui long nhap lai.");
             }
         }
 
@@ -28,25 +27,25 @@ public class ThanhToan {
         ArrayList<KhachHang> KetQua = QuanLyKhachHang.TimKiemKhachHang(TenKhachHang);
 
         if (KetQua.isEmpty()) {
-            System.out.println("Khong tim thay khach hang.");
+            System.out.println("\nKhong tim thay khach hang.");
             return;
         }
 
         KhachHang KhachThanhToan;
         if (KetQua.size() > 1) {
-            System.out.println("Ket qua tra ve voi ten: ");
+            System.out.println("\nKet qua tra ve voi ten: ");
             for (int i = 0; i < KetQua.size(); i++) {
                 KhachHang kh = KetQua.get(i);
                 System.out.println((i + 1) + ". " + kh.getTen() +
                         " - SDT: " + kh.getSDT() +
                         " - CCCD: " + kh.getCCCD());
             }
-            System.out.print("Chon khach hang can thanh toan (STT): ");
+            System.out.print("\nChon khach hang can thanh toan (STT): ");
             int chon = sc.nextInt();
             sc.nextLine(); 
 
             if (chon < 1 || chon > KetQua.size()) {
-                System.out.println("Lua chon khong hop le.");
+                System.out.println("\nLua chon khong hop le.");
                 return;
             }
 
@@ -61,7 +60,7 @@ public class ThanhToan {
         Phong PhongThanhToan = QuanLyPhong.TimPhong(SoPhong);
 
         if (PhongThanhToan == null || !PhongThanhToan.getTrangThai().equals("Full")) {
-            System.out.println("Phong khong kha dung hoac chua duoc dat.");
+            System.out.println("\nPhong khong kha dung hoac chua duoc dat.\n");
             return;
         }
 
@@ -69,7 +68,7 @@ public class ThanhToan {
         int SoNgay = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Nhap So Loai Dich Vu Khach Da Su Dung: ");
+        System.out.print("\nNhap So Loai Dich Vu Khach Da Su Dung: ");
         int SoDichVu = sc.nextInt();
         sc.nextLine();
 
@@ -101,7 +100,7 @@ public class ThanhToan {
         ArrayList<DichVu> DVSD = new ArrayList<>();
         QuanLyDichVu.HienThiDichVu();
         for (int i = 0; i < SoDichVu; i++) {
-            System.out.print("Nhap ten dich vu: ");
+            System.out.print("\nNhap ten dich vu: ");
             String TenDichVu = sc.nextLine();
 
             DichVu dichVu = QuanLyDichVu.TimKiemDichVu(TenDichVu);
@@ -112,14 +111,14 @@ public class ThanhToan {
 
                 int TienDichVu = (int) dichVu.getGia() * SoLuong;
 
-                System.out.printf("Khach da chon dich vu: %s - So luong: %d - Thanh tien: %d VND\n",
+                System.out.printf("\nKhach da chon dich vu: %s - So luong: %d - Thanh tien: %d VND\n",
                         dichVu.getTenDichVu(), SoLuong, TienDichVu);
 
                 for (int j = 0; j < SoLuong; j++) {
                     DVSD.add(dichVu);
                 }
             } else {
-                System.out.println("Dich vu khong ton tai.");
+                System.out.println("\nDich vu khong ton tai.");
             }
         }
         return DVSD;
@@ -139,16 +138,16 @@ public class ThanhToan {
     // Thực hiện thanh toán
     public void ThucHienThanhToan(KhachHang KhachThanhToan, Phong PhongThanhToan, int SoNgay, ArrayList<DichVu> DVSD) {
         int TienPhong = TienPhong(PhongThanhToan, SoNgay);
-        System.out.println("Tong tien phong: " + TienPhong + " VND");
+        System.out.println("\nTong tien phong: " + TienPhong + " VND");
 
         int TongTienDichVu = TienDichVu(DVSD);
         System.out.println("Tong tien dich vu: " + TongTienDichVu + " VND");
 
         int TongTien = TienPhong + TongTienDichVu;
-        System.out.printf("Tong tien thanh toan: %d VND\n", TongTien);
+        System.out.printf("\n\nTong tien thanh toan: %d VND\n", TongTien);
 
         PhongThanhToan.setTrangThai("Trong");
-        System.out.println("Cam on quy khach!");
+        System.out.println("\nCam on quy khach!\n");
     }
 
 }
