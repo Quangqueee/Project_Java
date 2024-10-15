@@ -143,7 +143,10 @@ public class QuanLyKhachHang {
     
         System.out.println("\nChon khach hang muon xoa:\n");
         for (int i = 0; i < KetQua.size(); i++) {
-            System.out.println((i + 1) + ". " + KetQua.get(i));
+            KhachHang kh = KetQua.get(i);
+            System.out.println((i + 1) + ". " + kh.getTen() +
+                    " - So dien thoai: " + kh.getSDT() +
+                    " - CCCD: " + kh.getCCCD());
         }
     
         System.out.print("\nNhap so thu tu khach hang can xoa: ");
