@@ -105,13 +105,13 @@ public class ThanhToan {
 
             DichVu dichVu = QuanLyDichVu.TimKiemDichVu(TenDichVu);
             if (dichVu != null) {
-                System.out.print("Nhap so luong dich vu '" + TenDichVu + "' su dung: ");
+                System.out.print("Nhap so luong dich vu ''" + TenDichVu + "'' su dung: ");
                 int SoLuong = sc.nextInt();
                 sc.nextLine();
 
                 int TienDichVu = (int) dichVu.getGia() * SoLuong;
 
-                System.out.printf("\nKhach da chon dich vu: %s - So luong: %d - Thanh tien: %d VND\n",
+                System.out.printf("Khach da chon dich vu: %s - So luong: %d - Thanh tien: %d VND\n",
                         dichVu.getTenDichVu(), SoLuong, TienDichVu);
 
                 for (int j = 0; j < SoLuong; j++) {
@@ -138,13 +138,13 @@ public class ThanhToan {
     // Thực hiện thanh toán
     public void ThucHienThanhToan(KhachHang KhachThanhToan, Phong PhongThanhToan, int SoNgay, ArrayList<DichVu> DVSD) {
         int TienPhong = TienPhong(PhongThanhToan, SoNgay);
-        System.out.println("\nTong tien phong: " + TienPhong + " VND");
+        System.out.println("\n- Tong tien phong: " + TienPhong + " VND");
 
         int TongTienDichVu = TienDichVu(DVSD);
-        System.out.println("Tong tien dich vu: " + TongTienDichVu + " VND");
+        System.out.println("- Tong tien dich vu: " + TongTienDichVu + " VND");
 
         int TongTien = TienPhong + TongTienDichVu;
-        System.out.printf("\n\nTong tien thanh toan: %d VND\n", TongTien);
+        System.out.printf("\n\n\t ==> Tong tien thanh toan: %d VND\n", TongTien);
 
         PhongThanhToan.setTrangThai("Trong");
         System.out.println("\nCam on quy khach!\n");
