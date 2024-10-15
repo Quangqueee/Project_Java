@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class QuanLyDichVu {
     private ArrayList<DichVu> DanhSachDichVu;
 
-    // Khởi tạo danh sách dịch vụ với dữ liệu mẫu
     public QuanLyDichVu() {
         DanhSachDichVu = new ArrayList<>();
         DanhSachDichVu.add(new DichVu("An sang", 100000));
@@ -16,7 +15,6 @@ public class QuanLyDichVu {
         DanhSachDichVu.add(new DichVu("Spa", 300000));
     }
 
-    // Hiển thị danh sách dịch vụ
     public void HienThiDichVu() {
         if (DanhSachDichVu.isEmpty()) {
             System.out.println("Danh sach dich vu trong.");
@@ -52,7 +50,6 @@ public class QuanLyDichVu {
         System.out.println("Them dich vu thanh cong.");
     }
 
-    // Xóa dịch vụ theo tên
     public void XoaDichVu() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ten dich vu can xoa: ");
@@ -67,7 +64,6 @@ public class QuanLyDichVu {
         }
     }
 
-    // Hiển thị menu quản lý dịch vụ
     public void MenuQuanLyDichVu() {
         Scanner sc = new Scanner(System.in);
         while (true) {

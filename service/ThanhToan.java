@@ -136,7 +136,7 @@ public class ThanhToan {
         return TongTien;
     }
 
-    // Thực hiện thanh toán và tính tổng tiền
+    // Thực hiện thanh toán
     public void ThucHienThanhToan(KhachHang KhachThanhToan, Phong PhongThanhToan, int SoNgay, ArrayList<DichVu> DVSD) {
         int TienPhong = TienPhong(PhongThanhToan, SoNgay);
         System.out.println("Tong tien phong: " + TienPhong + " VND");
