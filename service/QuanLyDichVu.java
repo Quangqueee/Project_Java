@@ -48,7 +48,6 @@ public class QuanLyDichVu {
 
         DanhSachDichVu.add(new DichVu(tenDichVu, gia));
         System.out.println("\nThem dich vu thanh cong.");
-        sc.close();
     }
 
     public void XoaDichVu() {
@@ -63,7 +62,6 @@ public class QuanLyDichVu {
         } else {
             System.out.println("\nKhong tim thay dich vu.");
         }
-        sc.close();
     }
 
     public void MenuQuanLyDichVu() {
@@ -93,7 +91,6 @@ public class QuanLyDichVu {
                     break;
                 case 4:
                     System.out.println("\nQuay lai menu chinh.");
-                    sc.close();
                     return;
                 default:
                     System.out.println("\nChuc nang khong hop le.");
