@@ -175,8 +175,9 @@ public class QuanLyKhachHang {
             return;
         }
 
+        System.out.println("\nDanh sach khach hang:\n");
         for (KhachHang kh : DanhSachKhachHang) {
-            System.out.println("Khach hang: " + kh.getTen()
+            System.out.println("- Khach hang: " + kh.getTen()
                     + " - So dien thoai: " + kh.getSDT()
                     + " - CCCD: " + kh.getCCCD());
 
