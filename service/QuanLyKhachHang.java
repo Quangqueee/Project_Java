@@ -24,7 +24,6 @@ public class QuanLyKhachHang {
     public void ThemKhachHang() {
         Scanner sc = new Scanner(System.in);
 
-        // Nhập và kiểm tra tên khách hàng
         String ten;
         while (true) {
             System.out.print("Nhap ten khach hang: ");
@@ -36,7 +35,6 @@ public class QuanLyKhachHang {
             }
         }
 
-        // Nhập và kiểm tra số điện thoại
         String sdt;
         while (true) {
             System.out.print("Nhap so dien thoai: ");
@@ -48,7 +46,6 @@ public class QuanLyKhachHang {
             }
         }
 
-        // Nhập và kiểm tra số CCCD
         String cccd;
         while (true) {
             System.out.print("Nhap so CCCD: ");
@@ -60,22 +57,21 @@ public class QuanLyKhachHang {
             }
         }
 
-        // Thêm khách hàng vào danh sách
-        KhachHang khachHang = new KhachHang(ten, sdt, cccd);
-        DanhSachKhachHang.add(khachHang);
+        KhachHang KhachHang = new KhachHang(ten, sdt, cccd);
+        DanhSachKhachHang.add(KhachHang);
         System.out.println("Them khach hang thanh cong.");
     }
 
     public ArrayList<KhachHang> TimKiemKhachHang(String key) {
-        ArrayList<KhachHang> ketQua = new ArrayList<>();
+        ArrayList<KhachHang> KetQua = new ArrayList<>();
         for (KhachHang kh : DanhSachKhachHang) {
             if (kh.getTen().toLowerCase().contains(key.toLowerCase()) ||
                     kh.getSDT().contains(key) ||
                     kh.getCCCD().contains(key)) {
-                ketQua.add(kh);
+                KetQua.add(kh);
             }
         }
-        return ketQua;
+        return KetQua;
     }
 
     public void SuaKhachHang() {
@@ -83,36 +79,36 @@ public class QuanLyKhachHang {
         System.out.print("Nhap thong tin khach hang can sua (ten, SDT, CCCD): ");
         String key = sc.nextLine();
 
-        ArrayList<KhachHang> ketQua = TimKiemKhachHang(key);
+        ArrayList<KhachHang> KetQua = TimKiemKhachHang(key);
 
-        if (ketQua.isEmpty()) {
+        if (KetQua.isEmpty()) {
             System.out.println("Khong tim thay khach hang.");
             return;
         }
 
         // Nếu có nhiều khách hàng khớp, yêu cầu chọn một khách hàng cụ thể
-        if (ketQua.size() > 1) {
+        if (KetQua.size() > 1) {
             System.out.println("Co nhieu khach hang khop voi thong tin: ");
-            for (int i = 0; i < ketQua.size(); i++) {
-                KhachHang kh = ketQua.get(i);
+            for (int i = 0; i < KetQua.size(); i++) {
+                KhachHang kh = KetQua.get(i);
                 System.out.println((i + 1) + ". " + kh.getTen() +
-                        " - SĐT: " + kh.getSDT() +
+                        " - SDT: " + kh.getSDT() +
                         " - CCCD: " + kh.getCCCD());
             }
             System.out.print("Chon khach hang can sua (Chon theo STT): ");
             int chon = sc.nextInt();
             sc.nextLine();
 
-            if (chon < 1 || chon > ketQua.size()) {
+            if (chon < 1 || chon > KetQua.size()) {
                 System.out.println("Lua chon khong hop le.");
                 return;
             }
 
-            KhachHang kh = ketQua.get(chon - 1);
+            KhachHang kh = KetQua.get(chon - 1);
             CapNhatThongTinKhachHang(sc, kh);
         } else {
             // Nếu chỉ có một khách hàng, sửa trực tiếp
-            KhachHang kh = ketQua.get(0);
+            KhachHang kh = KetQua.get(0);
             CapNhatThongTinKhachHang(sc, kh);
         }
     }
@@ -121,7 +117,7 @@ public class QuanLyKhachHang {
     private void CapNhatThongTinKhachHang(Scanner sc, KhachHang kh) {
         System.out.print("Nhap ten moi: ");
         String tenMoi = sc.nextLine();
-        System.out.print("Nhap SĐT moi: ");
+        System.out.print("Nhap SDT moi: ");
         String sdtMoi = sc.nextLine();
         System.out.print("Nhap CCCD moi: ");
         String cccdMoi = sc.nextLine();
@@ -135,7 +131,7 @@ public class QuanLyKhachHang {
 
     public void XoaKhachHang() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nhap thong tin khach hang can xoa (ten, SĐT, CCCD): ");
+        System.out.print("Nhap thong tin khach hang can xoa (ten, SDT, CCCD): ");
         String key = sc.nextLine();
     
         ArrayList<KhachHang> KetQua = TimKiemKhachHang(key); 

@@ -10,14 +10,12 @@ import java.util.Scanner;
 public class ThanhToan {
     private Scanner sc = new Scanner(System.in);
 
-    // Hiển thị menu thanh toán
-    public void MenuThanhToan(QuanLyKhachHang quanLyKhachHang, QuanLyPhong quanLyPhong, QuanLyDichVu quanLyDichVu) {
+    public void MenuThanhToan(QuanLyKhachHang QuanLyKhachHang, QuanLyPhong QuanLyPhong, QuanLyDichVu QuanLyDichVu) {
         System.out.println("--------Thanh Toan--------");
 
         System.out.print("Nhap Ten Khach Hang: ");
         String TenKhachHang;
         while (true) {
-            System.out.print("Nhap ten khach hang: ");
             TenKhachHang = sc.nextLine();
             if (TenKhachHang.matches("[a-zA-Z\\s]{1,50}")) {
                 break;
@@ -26,28 +24,26 @@ public class ThanhToan {
             }
         }
 
-
         // Tìm kiếm danh sách khách hàng khớp với tên
-        ArrayList<KhachHang> KetQua = quanLyKhachHang.TimKiemKhachHang(TenKhachHang);
+        ArrayList<KhachHang> KetQua = QuanLyKhachHang.TimKiemKhachHang(TenKhachHang);
 
         if (KetQua.isEmpty()) {
             System.out.println("Khong tim thay khach hang.");
             return;
         }
 
-        // Nếu có nhiều khách hàng, yêu cầu người dùng chọn
         KhachHang KhachThanhToan;
         if (KetQua.size() > 1) {
             System.out.println("Ket qua tra ve voi ten: ");
             for (int i = 0; i < KetQua.size(); i++) {
                 KhachHang kh = KetQua.get(i);
                 System.out.println((i + 1) + ". " + kh.getTen() +
-                        " - SĐT: " + kh.getSDT() +
+                        " - SDT: " + kh.getSDT() +
                         " - CCCD: " + kh.getCCCD());
             }
-            System.out.print("Chon khach hang can thanh toan (so thu tu): ");
+            System.out.print("Chon khach hang can thanh toan (STT): ");
             int chon = sc.nextInt();
-            sc.nextLine(); // Đọc bỏ ký tự xuống dòng
+            sc.nextLine(); 
 
             if (chon < 1 || chon > KetQua.size()) {
                 System.out.println("Lua chon khong hop le.");
@@ -62,26 +58,23 @@ public class ThanhToan {
         // Nhập số phòng cần thanh toán và kiểm tra
         System.out.print("Nhap So Phong: ");
         String SoPhong = sc.nextLine();
-        Phong PhongThanhToan = quanLyPhong.TimPhong(SoPhong);
+        Phong PhongThanhToan = QuanLyPhong.TimPhong(SoPhong);
 
         if (PhongThanhToan == null || !PhongThanhToan.getTrangThai().equals("Full")) {
             System.out.println("Phong khong kha dung hoac chua duoc dat.");
             return;
         }
 
-        // Nhập số ngày khách ở
         System.out.print("Nhap So Ngay Khach O: ");
         int SoNgay = sc.nextInt();
         sc.nextLine();
 
-        // Nhập dịch vụ đã sử dụng
         System.out.print("Nhap So Loai Dich Vu Khach Da Su Dung: ");
         int SoDichVu = sc.nextInt();
         sc.nextLine();
 
-        ArrayList<DichVu> DVSD = NhapDichVuSuDung(SoDichVu, quanLyDichVu);
+        ArrayList<DichVu> DVSD = NhapDichVuSuDung(SoDichVu, QuanLyDichVu);
 
-        // Thực hiện thanh toán
         ThucHienThanhToan(KhachThanhToan, PhongThanhToan, SoNgay, DVSD);
     }
 
@@ -99,11 +92,40 @@ public class ThanhToan {
             case "Phong Vip":
                 return 1000000;
             default:
-                return 70000; 
+                return 70000;
         }
     }
 
-    // Tính tiền dịch vụ từ danh sách dịch vụ đã sử dụng (int)
+    // Nhập các dịch vụ khách đã sử dụng
+    public ArrayList<DichVu> NhapDichVuSuDung(int SoDichVu, QuanLyDichVu QuanLyDichVu) {
+        ArrayList<DichVu> DVSD = new ArrayList<>();
+        QuanLyDichVu.HienThiDichVu();
+        for (int i = 0; i < SoDichVu; i++) {
+            System.out.print("Nhap ten dich vu: ");
+            String TenDichVu = sc.nextLine();
+
+            DichVu dichVu = QuanLyDichVu.TimKiemDichVu(TenDichVu);
+            if (dichVu != null) {
+                System.out.print("Nhap so luong dich vu '" + TenDichVu + "' su dung: ");
+                int SoLuong = sc.nextInt();
+                sc.nextLine();
+
+                int TienDichVu = (int) dichVu.getGia() * SoLuong;
+
+                System.out.printf("Khach da chon dich vu: %s - So luong: %d - Thanh tien: %d VND\n",
+                        dichVu.getTenDichVu(), SoLuong, TienDichVu);
+
+                for (int j = 0; j < SoLuong; j++) {
+                    DVSD.add(dichVu);
+                }
+            } else {
+                System.out.println("Dich vu khong ton tai.");
+            }
+        }
+        return DVSD;
+    }
+
+    // Tính tiền dịch vụ từ danh sách dịch vụ
     public int TienDichVu(ArrayList<DichVu> DanhSachDichVu) {
         int TongTien = 0;
         if (DanhSachDichVu != null && !DanhSachDichVu.isEmpty()) {
@@ -129,31 +151,4 @@ public class ThanhToan {
         System.out.println("Cam on quy khach!");
     }
 
-    // Nhập các dịch vụ khách đã sử dụng và tính số lượng dịch vụ (int)
-    public ArrayList<DichVu> NhapDichVuSuDung(int SoDichVu, QuanLyDichVu QuanLyDichVu) {
-        ArrayList<DichVu> DVSD = new ArrayList<>();
-        for (int i = 0; i < SoDichVu; i++) {
-            System.out.print("Nhap ten dich vu: ");
-            String TenDichVu = sc.nextLine();
-
-            DichVu dichVu = QuanLyDichVu.TimKiemDichVu(TenDichVu);
-            if (dichVu != null) {
-                System.out.print("Nhap so luong dich vu '" + TenDichVu + "' su dung: ");
-                int SoLuong = sc.nextInt();
-                sc.nextLine(); 
-
-                int TienDichVu = (int) dichVu.getGia() * SoLuong;
-
-                System.out.printf("Khach da chon dich vu: %s - So luong: %d - Thanh tien: %d VND\n",
-                        dichVu.getTenDichVu(), SoLuong, TienDichVu);
-
-                for (int j = 0; j < SoLuong; j++) {
-                    DVSD.add(dichVu);
-                }
-            } else {
-                System.out.println("Dich vu khong ton tai.");
-            }
-        }
-        return DVSD;
-    }
 }

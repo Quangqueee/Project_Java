@@ -6,17 +6,15 @@ import service.ThanhToan;
 
 import java.util.Scanner;
 
-
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Khởi tạo các đối tượng quản lý
-        QuanLyKhachHang quanLyKhachHang = new QuanLyKhachHang();
-        QuanLyPhong quanLyPhong = new QuanLyPhong();
-        QuanLyDichVu quanLyDichVu = new QuanLyDichVu();
-        QuanLyNhanVien quanLyNhanVien = new QuanLyNhanVien();
-        ThanhToan thanhToan = new ThanhToan();
+        QuanLyKhachHang QuanLyKhachHang = new QuanLyKhachHang();
+        QuanLyPhong QuanLyPhong = new QuanLyPhong();
+        QuanLyDichVu QuanLyDichVu = new QuanLyDichVu();
+        QuanLyNhanVien QuanLyNhanVien = new QuanLyNhanVien();
+        ThanhToan ThanhToan = new ThanhToan();
 
         while (true) {
             System.out.println("\n|----------------------------|");
@@ -27,7 +25,8 @@ public class Main {
             System.out.println("| 3. Quan Ly Dich Vu         |");
             System.out.println("| 4. Dat Phong               |");
             System.out.println("| 5. Thanh Toan              |");
-            System.out.println("| 6. Thoat                   |");
+            System.out.println("| 6. Quan Ly Nhan Vien       |");
+            System.out.println("| 7. Thoat                   |");
             System.out.println("|----------------------------|");
             System.out.print("Chon Chuc Nang: ");
             int chon = sc.nextInt();
@@ -35,33 +34,33 @@ public class Main {
 
             switch (chon) {
                 case 1:
-                    quanLyKhachHang.MenuQuanLyKhachHang();
+                    QuanLyKhachHang.MenuQuanLyKhachHang();
                     break;
 
                 case 2:
-                    quanLyPhong.MenuQuanLyPhong();
+                    QuanLyPhong.MenuQuanLyPhong();
                     break;
 
                 case 3:
-                    quanLyDichVu.MenuQuanLyDichVu();
+                    QuanLyDichVu.MenuQuanLyDichVu();
                     break;
 
                 case 4:
-                    quanLyPhong.DatPhong(quanLyKhachHang);
+                    QuanLyPhong.DatPhong(QuanLyKhachHang);
                     break;
 
                 case 5:
-                    thanhToan.MenuThanhToan(quanLyKhachHang, quanLyPhong, quanLyDichVu);
+                    ThanhToan.MenuThanhToan(QuanLyKhachHang, QuanLyPhong, QuanLyDichVu);
                     break;
 
                 case 6:
+                    QuanLyNhanVien.MenuQuanLyNhanVien();
+                    break;
+                case 7:
                     System.out.println("Thoat Chuong Trinh.");
                     System.exit(0);
                     break;
 
-                case 7:
-                    quanLyNhanVien.MenuQuanLyNhanVien();
-                    break;
                 default:
                     System.out.println("Chuc Nang Khong Hop Le. Vui Long Chon Lai.");
             }

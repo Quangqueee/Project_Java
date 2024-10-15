@@ -1,25 +1,31 @@
 package model;
 
 public class NhanVienThuong extends NhanVien {
-    private String boPhanLamViec;
+    private String bplv; // Bộ phận làm việc
 
-    public NhanVienThuong(String ten, int tuoi, String queQuan, String ngaySinh,
-            String cccd, String sdt, double heSoLuong, String boPhanLamViec) {
-        super(ten, tuoi, queQuan, ngaySinh, cccd, sdt, heSoLuong);
-        this.boPhanLamViec = boPhanLamViec;
+    // Constructor
+    public NhanVienThuong(String ten, int tuoi, String que, String ngaysinh,
+            String cccd, String sdt, double hsl, String bplv) {
+        super(ten, tuoi, que, ngaysinh, cccd, sdt, hsl);
+        this.bplv = bplv;
     }
 
-    public String getBoPhanLamViec() {
-        return boPhanLamViec;
+    public String getBplv() {
+        return bplv;
+    }
+
+    public void setBplv(String bplv) {
+        this.bplv = bplv;
     }
 
     @Override
-    public double tinhLuong() {
-        return heSoLuong * 5000000; // Hệ số lương * 5 triệu
+    public double TinhLuong(double NgayCong) {
+        return getHsl() * 1000 * NgayCong;
     }
+
 
     @Override
     public String toString() {
-        return super.toString() + ", Bo phan: " + boPhanLamViec;
+        return super.toString() + ", Bo phan: " + bplv;
     }
 }

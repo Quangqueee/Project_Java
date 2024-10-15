@@ -1,13 +1,13 @@
 package model;
 
 public class QuanLy extends NhanVien {
-    public QuanLy(String ten, int tuoi, String queQuan, String ngaySinh,
-            String cccd, String sdt, double heSoLuong) {
-        super(ten, tuoi, queQuan, ngaySinh, cccd, sdt, heSoLuong);
+    public QuanLy(String ten, int tuoi, String que, String ngaysinh,
+            String cccd, String sdt, double hsl) {
+        super(ten, tuoi, que, ngaysinh, cccd, sdt, hsl);
     }
 
     @Override
-    public double tinhLuong() {
-        return heSoLuong * 10000000; // Hệ số lương * 10 triệu
+    public double TinhLuong(double NgayCong) {
+        return NgayCong * hsl * 2000;
     }
 }

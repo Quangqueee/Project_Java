@@ -15,9 +15,14 @@ public class QuanLyPhong {
         DanhSachPhong.add(new Phong("101", "Phong Don", "Trong"));
         DanhSachPhong.add(new Phong("102", "Phong Doi", "Trong"));
         DanhSachPhong.add(new Phong("103", "Phong Vip", "Trong"));
+        DanhSachPhong.add(new Phong("201", "Phong Don", "Trong"));
+        DanhSachPhong.add(new Phong("202", "Phong Doi", "Trong"));
+        DanhSachPhong.add(new Phong("203", "Phong Vip", "Trong"));
+        DanhSachPhong.add(new Phong("301", "Phong Don", "Trong"));
+        DanhSachPhong.add(new Phong("302", "Phong Doi", "Trong"));
+        DanhSachPhong.add(new Phong("303", "Phong Vip", "Trong"));
     }
 
-    // Hiển thị trạng thái tất cả các phòng
     public void TrangThaiPhong() {
         System.out.println("Danh Sach Phong:");
         for (Phong Phong : DanhSachPhong) {
@@ -27,15 +32,14 @@ public class QuanLyPhong {
         }
     }
 
-    public void DatPhong(QuanLyKhachHang quanLyKhachHang) {
+    public void DatPhong(QuanLyKhachHang QuanLyKhachHang) {
         System.out.println("--------Dat Phong--------");
 
-        // Nhập tên khách hàng và kiểm tra tính hợp lệ
-        String tenKhachHang;
+        String tenkhach;
         while (true) {
             System.out.print("Nhap ten khach hang: ");
-            tenKhachHang = sc.nextLine();
-            if (tenKhachHang.matches("[a-zA-Z\\s]{1,50}")) {
+            tenkhach = sc.nextLine();
+            if (tenkhach.matches("[a-zA-Z\\s]{1,50}")) {
                 break;
             } else {
                 System.out.println("Ten khong hop le! Vui long nhap lai.");
@@ -43,13 +47,12 @@ public class QuanLyPhong {
         }
 
         // Tìm kiếm khách hàng trong hệ thống
-        ArrayList<KhachHang> ketQua = quanLyKhachHang.TimKiemKhachHang(tenKhachHang);
+        ArrayList<KhachHang> KetQua = QuanLyKhachHang.TimKiemKhachHang(tenkhach);
 
-        KhachHang khachHang;
-        if (ketQua.isEmpty()) {
+        KhachHang KhachHang;
+        if (KetQua.isEmpty()) {
             System.out.println("Khach Hang Chua Co Trong He Thong. Tao Moi Khach Hang.");
 
-            // Nhập và kiểm tra số điện thoại
             String sdt;
             while (true) {
                 System.out.print("Nhap so dien thoai: ");
@@ -61,7 +64,6 @@ public class QuanLyPhong {
                 }
             }
 
-            // Nhập và kiểm tra CCCD
             String cccd;
             while (true) {
                 System.out.print("Nhap so CCCD: ");
@@ -73,43 +75,42 @@ public class QuanLyPhong {
                 }
             }
 
-            // Tạo đối tượng khách hàng mới và thêm vào hệ thống
-            khachHang = new KhachHang(tenKhachHang, sdt, cccd);
-            quanLyKhachHang.ThemKhachHang(khachHang);
-            System.out.println("Them Khach Hang Moi Thanh Cong.");
+            KhachHang = new KhachHang(tenkhach, sdt, cccd);
+            QuanLyKhachHang.ThemKhachHang(KhachHang);
+
         } else {
             // Nếu có nhiều kết quả, yêu cầu chọn khách hàng cụ thể
-            if (ketQua.size() > 1) {
+            if (KetQua.size() > 1) {
                 System.out.println("Co nhieu khach hang khop voi ten: ");
-                for (int i = 0; i < ketQua.size(); i++) {
-                    KhachHang kh = ketQua.get(i);
+                for (int i = 0; i < KetQua.size(); i++) {
+                    KhachHang kh = KetQua.get(i);
                     System.out.println((i + 1) + ". " + kh.getTen() +
-                            " - SĐT: " + kh.getSDT() +
+                            " - SDT: " + kh.getSDT() +
                             " - CCCD: " + kh.getCCCD());
                 }
                 System.out.print("Chon khach hang (so thu tu): ");
                 int chon = sc.nextInt();
-                sc.nextLine(); // Đọc bỏ ký tự xuống dòng
+                sc.nextLine();
 
-                if (chon < 1 || chon > ketQua.size()) {
+                if (chon < 1 || chon > KetQua.size()) {
                     System.out.println("Lua chon khong hop le.");
                     return;
                 }
-                khachHang = ketQua.get(chon - 1);
+                KhachHang = KetQua.get(chon - 1);
             } else {
-                khachHang = ketQua.get(0); // Nếu chỉ có một kết quả, chọn luôn
+                KhachHang = KetQua.get(0);
             }
         }
 
-        // Nhập số phòng và kiểm tra tính hợp lệ
+        // Nhập số phòng và kiểm tra
         System.out.print("Nhap So Phong: ");
-        String soPhong = sc.nextLine();
-        Phong phongDat = TimPhong(soPhong);
+        String SoPhong = sc.nextLine();
+        Phong PhongDat = TimPhong(SoPhong);
 
-        if (phongDat != null && phongDat.getTrangThai().equals("Trong")) {
-            phongDat.setTrangThai("Full");
-            System.out.println("Dat Phong Thanh Cong. Phong: " + phongDat.getSoPhong());
-            khachHang.themPhongDaThue(soPhong); // Cập nhật lịch sử phòng đã thuê
+        if (PhongDat != null && PhongDat.getTrangThai().equals("Trong")) {
+            PhongDat.setTrangThai("Full");
+            System.out.println("Dat Phong Thanh Cong. Phong: " + PhongDat.getSoPhong());
+            KhachHang.ThemPhongDaThue(SoPhong); // Cập nhật lịch sử phòng đã thuê
         } else {
             System.out.println("Phong Khong Kha Dung Hoac Da Duoc Dat.");
         }
