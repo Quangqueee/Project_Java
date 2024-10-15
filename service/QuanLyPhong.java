@@ -33,16 +33,16 @@ public class QuanLyPhong {
     }
 
     public void DatPhong(QuanLyKhachHang QuanLyKhachHang) {
-        System.out.println("--------Dat Phong--------");
+        System.out.println("\n-------- Dat Phong --------");
 
         String tenkhach;
         while (true) {
-            System.out.print("Nhap ten khach hang: ");
+            System.out.print("\nNhap ten khach hang: ");
             tenkhach = sc.nextLine();
             if (tenkhach.matches("[a-zA-Z\\s]{1,50}")) {
                 break;
             } else {
-                System.out.println("\nTen khong hop le! Vui long nhap lai.\n");
+                System.out.println("\nTen khong hop le! Vui long nhap lai.");
             }
         }
 
