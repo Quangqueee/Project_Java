@@ -19,7 +19,7 @@ public class KhachHang {
         return LichSuDatPhong;
     }
 
-    public void ThemLichSuDatPhong(String phong) {
+    public void themPhongDaThue(String phong) {
         LichSuDatPhong.add(phong);
     }
 

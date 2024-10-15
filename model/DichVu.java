@@ -2,9 +2,9 @@ package model;
 
 public class DichVu {
     private String TenDichVu;
-    private double Gia;
+    private int Gia;
 
-    public DichVu(String TenDichVu, double Gia) {
+    public DichVu(String TenDichVu, int Gia) {
         this.TenDichVu = TenDichVu;
         this.Gia = Gia;
     }
@@ -17,11 +17,11 @@ public class DichVu {
         this.TenDichVu = TenDichVu;
     }
 
-    public double getGia() {
+    public int getGia() {
         return Gia;
     }
 
-    public void setGia(double gia) {
+    public void setGia(int gia) {
         this.Gia = gia;
     }
 }
