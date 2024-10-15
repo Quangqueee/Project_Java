@@ -324,16 +324,16 @@ public class QuanLyNhanVien {
 
     public void MenuQuanLyNhanVien() {
         while (true) {
-            System.out.println("\n|------------------------|");
-            System.out.println("|   Quan ly nhan vien    |");
-            System.out.println("|------------------------|");
-            System.out.println("| 1. Them nhan vien      |");
-            System.out.println("| 2. Hien thi danh sach  |");
-            System.out.println("| 3. Tinh luong nhan vien|");
-            System.out.println("| 4. Xoa nhan vien       |");
-            System.out.println("| 5. Sua nhan vien       |");
-            System.out.println("| 6. Quay lai            |");
-            System.out.println("|------------------------|");
+            System.out.println("\n|-------------------------|");
+            System.out.println("|   Quan ly nhan vien     |");
+            System.out.println("|-------------------------|");
+            System.out.println("| 1. Them nhan vien       |");
+            System.out.println("| 2. Hien thi danh sach   |");
+            System.out.println("| 3. Tinh luong nhan vien |");
+            System.out.println("| 4. Xoa nhan vien        |");
+            System.out.println("| 5. Sua nhan vien        |");
+            System.out.println("| 6. Quay lai             |");
+            System.out.println("|-------------------------|");
             System.out.print("\nChon chuc nang: ");
             int chon = sc.nextInt();
             sc.nextLine();
