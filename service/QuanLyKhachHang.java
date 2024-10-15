@@ -60,7 +60,6 @@ public class QuanLyKhachHang {
         KhachHang KhachHang = new KhachHang(ten, sdt, cccd);
         DanhSachKhachHang.add(KhachHang);
         System.out.println("\nThem khach hang thanh cong.");
-        sc.close();
     }
 
     public ArrayList<KhachHang> TimKiemKhachHang(String key) {
@@ -84,7 +83,6 @@ public class QuanLyKhachHang {
 
         if (KetQua.isEmpty()) {
             System.out.println("\nKhong tim thay khach hang.");
-            sc.close();
             return;
         }
 
@@ -103,7 +101,6 @@ public class QuanLyKhachHang {
 
             if (chon < 1 || chon > KetQua.size()) {
                 System.out.println("\nLua chon khong hop le.");
-                sc.close();
                 return;
             }
 
@@ -114,7 +111,6 @@ public class QuanLyKhachHang {
             KhachHang kh = KetQua.get(0);
             CapNhatThongTinKhachHang(sc, kh);
         }
-        sc.close();
     }
 
     // Hàm cập nhật thông tin khách hàng
@@ -142,7 +138,6 @@ public class QuanLyKhachHang {
     
         if (KetQua.isEmpty()) {
             System.out.println("\nKhong tim thay khach hang nao.");
-            sc.close();
             return;
         }
     
@@ -160,14 +155,12 @@ public class QuanLyKhachHang {
     
         if (chon < 1 || chon > KetQua.size()) {
             System.out.println("\nLua chon khong hop le.");
-            sc.close();
             return;
         }
     
         KhachHang khachHang = KetQua.get(chon - 1);
         DanhSachKhachHang.remove(khachHang); 
         System.out.println("\nXoa khach hang thanh cong.");
-        sc.close();
     }
     
 
@@ -243,7 +236,6 @@ public class QuanLyKhachHang {
                     break;
                 case 6:
                     System.out.println("\nQuay lai menu chinh.");
-                    sc.close();
                     return;
                 default:
                     System.out.println("\nChuc nang khong hop le.");
