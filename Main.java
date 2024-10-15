@@ -28,7 +28,7 @@ public class Main {
             System.out.println("| 6. Quan Ly Nhan Vien       |");
             System.out.println("| 7. Thoat                   |");
             System.out.println("|----------------------------|");
-            System.out.print("Chon Chuc Nang: ");
+            System.out.print("\nChon Chuc Nang: ");
             int chon = sc.nextInt();
             sc.nextLine();
 
@@ -57,12 +57,12 @@ public class Main {
                     QuanLyNhanVien.MenuQuanLyNhanVien();
                     break;
                 case 7:
-                    System.out.println("Thoat Chuong Trinh.");
+                    System.out.println("\nThoat Chuong Trinh.\n");
                     System.exit(0);
                     break;
 
                 default:
-                    System.out.println("Chuc Nang Khong Hop Le. Vui Long Chon Lai.");
+                    System.out.println("\nChuc Nang Khong Hop Le. Vui Long Chon Lai.");
             }
         }
     }
