@@ -58,7 +58,6 @@ public class Main {
                     break;
                 case 7:
                     System.out.println("\nThoat Chuong Trinh.\n");
-                    sc.close();
                     System.exit(0);
                     break;
 
