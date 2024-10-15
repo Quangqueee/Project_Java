@@ -16,23 +16,23 @@ public class QuanLyNhanVien {
 
         DanhSachNhanVien.add(new NhanVienThuong(
                 "Nguyen Van A", 24, "Ha Noi", "21-10-2000",
-                "123456789012", "0912345678", 2.5, "CTV"));
+                "123456789012", "0912345678", 320000, "CTV"));
 
         DanhSachNhanVien.add(new NhanVienThuong(
                 "Tran Thi B", 25, "Hai Phong", "15-08-1998",
-                "098765432109", "0918765432", 2.0, "Ke Toan"));
+                "098765432109", "0918765432", 275000, "Ke Toan"));
 
         DanhSachNhanVien.add(new QuanLy(
                 "Le Van L", 35, "Bac Giang", "12-05-1988",
-                "112233445566", "0909123456", 3.5));
+                "112233445566", "0909123456", 500000));
 
         DanhSachNhanVien.add(new NhanVienThuong(
                 "Le Thi D", 28, "Ha Tay", "25-12-1996",
-                "223344556677", "0912987654", 2.8, "Le Tan"));
+                "223344556677", "0912987654", 250000, "Le Tan"));
 
         DanhSachNhanVien.add(new QuanLy(
                 "Hoang Van E", 40, "Quang Ninh", "10-11-1983",
-                "334455667788", "0909988776", 4.0));
+                "334455667788", "0909988776", 500000));
     }
 
     public void ThemNhanVien() {
@@ -160,10 +160,10 @@ public class QuanLyNhanVien {
         }
 
         System.out.print("Nhap so ngay cong: ");
-        double NgayCong = sc.nextDouble();
+        int NgayCong = sc.nextInt();
         sc.nextLine(); 
 
-        int luong = (int) nv.TinhLuong(NgayCong);
+        int luong = (int) (NgayCong * nv.getHsl());
         System.out.printf("Luong cua %s: %d VND\n", nv.getTen(), luong);
 
     }
