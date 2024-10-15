@@ -6,8 +6,4 @@ public class QuanLy extends NhanVien {
         super(ten, tuoi, que, ngaysinh, cccd, sdt, hsl);
     }
 
-    @Override
-    public double TinhLuong(double NgayCong) {
-        return NgayCong * hsl * 2000;
-    }
 }
