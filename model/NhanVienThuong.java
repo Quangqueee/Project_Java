@@ -3,7 +3,6 @@ package model;
 public class NhanVienThuong extends NhanVien {
     private String bplv; // Bộ phận làm việc
 
-    // Constructor
     public NhanVienThuong(String ten, int tuoi, String que, String ngaysinh,
             String cccd, String sdt, double hsl, String bplv) {
         super(ten, tuoi, que, ngaysinh, cccd, sdt, hsl);
