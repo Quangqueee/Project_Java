@@ -24,9 +24,9 @@ public class QuanLyPhong {
     }
 
     public void TrangThaiPhong() {
-        System.out.println("Danh Sach Phong:");
+        System.out.println("\nDanh Sach Phong:\n");
         for (Phong Phong : DanhSachPhong) {
-            System.out.println("Phong: " + Phong.getSoPhong() +
+            System.out.println("- Phong: " + Phong.getSoPhong() +
                     " - Loai phong: " + Phong.getLoaiPhong() +
                     " - Trang Thai: " + Phong.getTrangThai());
         }
