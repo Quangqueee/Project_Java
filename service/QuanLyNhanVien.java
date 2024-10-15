@@ -36,22 +36,22 @@ public class QuanLyNhanVien {
     }
 
     public void ThemNhanVien() {
-        System.out.println("Chon loai nhan vien:");
-        System.out.println("1. Nhan vien thuong");
+        System.out.println("\nChon loai nhan vien:");
+        System.out.println("\n1. Nhan vien thuong");
         System.out.println("2. Quan ly");
-        System.out.print("Lua chon: ");
+        System.out.print("\nLua chon: ");
         int chon = sc.nextInt();
         sc.nextLine();
 
         String ten;
         while (true) {
-            System.out.print("Nhap ten: ");
+            System.out.print("\nNhap ten: ");
             ten = sc.nextLine();
             if (ten.matches("[a-zA-Z\\s]{1,50}")) {
                 break;
             } else {
                 System.out.println(
-                        "Ten khong hop le! Vui long nhap lai (Chi chua chu va khoang trang, toi da 50 ky tu).");
+                        "\nTen khong hop le! Vui long nhap lai (Chi chua chu va khoang trang, toi da 50 ky tu).");
             }
         }
 
@@ -69,7 +69,7 @@ public class QuanLyNhanVien {
             if (ngaysinh.matches("\\d{2}/\\d{2}/\\d{4}")) {
                 break;
             } else {
-                System.out.println("Ngay sinh khong hop le! Vui long nhap lai.");
+                System.out.println("\nNgay sinh khong hop le! Vui long nhap lai.");
             }
         }
 
@@ -80,7 +80,7 @@ public class QuanLyNhanVien {
             if (cccd.matches("\\d{12}")) {
                 break;
             } else {
-                System.out.println("CCCD khong hop le! Vui long nhap lai.");
+                System.out.println("\nCCCD khong hop le! Vui long nhap lai.");
             }
         }
 
@@ -91,7 +91,7 @@ public class QuanLyNhanVien {
             if (sdt.matches("0\\d{9}")) {
                 break;
             } else {
-                System.out.println("So dien thoai khong hop le! Vui long nhap lai.");
+                System.out.println("\nSo dien thoai khong hop le! Vui long nhap lai.");
             }
         }
 
@@ -100,19 +100,19 @@ public class QuanLyNhanVien {
         sc.nextLine();
 
         if (chon == 1) {
-            System.out.print("Nhap bo phan lam viec: ");
+            System.out.print("\nNhap bo phan lam viec: ");
             String bplv = sc.nextLine();
             DanhSachNhanVien.add(new NhanVienThuong(ten, tuoi, que, ngaysinh, cccd, sdt, hsl, bplv));
         } else if (chon == 2) {
             DanhSachNhanVien.add(new QuanLy(ten, tuoi, que, ngaysinh, cccd, sdt, hsl));
         }
 
-        System.out.println("Them nhan vien thanh cong.");
+        System.out.println("\nThem nhan vien thanh cong.");
     }
 
     public void HienThiNhanVien() {
         if (DanhSachNhanVien.isEmpty()) {
-            System.out.println("Danh sach nhan vien trong.");
+            System.out.println("\nDanh sach nhan vien trong.");
             return;
         }
 
@@ -138,13 +138,13 @@ public class QuanLyNhanVien {
     }
 
     public void TinhLuong() {
-        System.out.print("Nhap ten hoac CCCD nhan vien: ");
+        System.out.print("\nNhap ten hoac CCCD nhan vien: ");
         String key = sc.nextLine();
 
         ArrayList<NhanVien> KetQua = TimKiemNhanVien(key);
 
         if (KetQua.isEmpty()) {
-            System.out.println("Khong tim thay nhan vien.");
+            System.out.println("\nKhong tim thay nhan vien.");
             return;
         }
 
@@ -154,7 +154,7 @@ public class QuanLyNhanVien {
         } else {
             nv = ChonNhanVien(KetQua);
             if (nv == null) {
-                System.out.println("Lua chon khong hop le.");
+                System.out.println("\nLua chon khong hop le.");
                 return;
             }
         }
@@ -184,7 +184,7 @@ public class QuanLyNhanVien {
     // Hàm hiển thị danh sách kết quả tìm kiếm để chọn nhân viên cụ thể
     private NhanVien ChonNhanVien(ArrayList<NhanVien> KetQua) {
         if (KetQua.isEmpty()) {
-            System.out.println("Khong tim thay nhan vien.");
+            System.out.println("\nKhong tim thay nhan vien.");
             return null;
         }
 
@@ -193,19 +193,19 @@ public class QuanLyNhanVien {
         }
 
         // Hiển thị danh sách nhân viên tìm thấy
-        System.out.println("Co nhieu nhan vien khop voi tu khoa. Vui long chon:");
+        System.out.println("\nCo nhieu nhan vien khop voi tu khoa. Vui long chon:\n");
         for (int i = 0; i < KetQua.size(); i++) {
             NhanVien nv = KetQua.get(i);
             System.out.printf("%d. %s - CCCD: %s - SDT: %s\n",
                     i + 1, nv.getTen(), nv.getCCCD(), nv.getSDT());
         }
 
-        System.out.print("Nhap STT nhan vien can chon: ");
+        System.out.print("\nNhap STT nhan vien can chon: ");
         int chon = sc.nextInt();
         sc.nextLine();
 
         if (chon < 1 || chon > KetQua.size()) {
-            System.out.println("Lua chon khong hop le.");
+            System.out.println("\nLua chon khong hop le.");
             return null;
         }
 
@@ -213,7 +213,7 @@ public class QuanLyNhanVien {
     }
 
     public void SuaNhanVien() {
-        System.out.print("Nhap ten hoac CCCD nhan vien can sua: ");
+        System.out.print("\nNhap ten hoac CCCD nhan vien can sua: ");
         String key = sc.nextLine();
         ArrayList<NhanVien> KetQua = TimKiemNhanVien(key);
 
@@ -230,7 +230,7 @@ public class QuanLyNhanVien {
             if (tenMoi.matches("[a-zA-Z\\s]{1,50}")) {
                 break;
             } else {
-                System.out.println("Ten khong hop le. Vui long nhap lai.");
+                System.out.println("\nTen khong hop le. Vui long nhap lai.\n");
             }
         }
         nv.setTen(tenMoi);
@@ -244,10 +244,10 @@ public class QuanLyNhanVien {
                 if (tuoiMoi > 0 && tuoiMoi <= 100) {
                     break;
                 } else {
-                    System.out.println("Tuoi khong hop le. Vui long nhap lai.");
+                    System.out.println("\nTuoi khong hop le. Vui long nhap lai.\n");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Vui long nhap so nguyen hop le.");
+                System.out.println("\nVui long nhap so nguyen hop le.\n");
             }
         }
         nv.setTuoi(tuoiMoi);
@@ -265,7 +265,7 @@ public class QuanLyNhanVien {
             if (sdtMoi.matches("0\\d{9}")) {
                 break;
             } else {
-                System.out.println("So dien thoai khong hop le. Vui long nhap lai.");
+                System.out.println("\nSo dien thoai khong hop le. Vui long nhap lai.\n");
             }
         }
         nv.setSDT(sdtMoi);
@@ -278,7 +278,7 @@ public class QuanLyNhanVien {
             if (cccdMoi.matches("\\d{12}")) {
                 break;
             } else {
-                System.out.println("So CCCD khong hop le. Vui long nhap lai.");
+                System.out.println("\nSo CCCD khong hop le. Vui long nhap lai.\n");
             }
         }
         nv.setCCCD(cccdMoi);
@@ -291,10 +291,10 @@ public class QuanLyNhanVien {
                 if (hslMoi > 0) {
                     break;
                 } else {
-                    System.out.println("He so luong phai lon hon 0. Vui long nhap lai.");
+                    System.out.println("\nHe so luong phai lon hon 0. Vui long nhap lai.\n");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Vui long nhap so thuc hop le.");
+                System.out.println("\nVui long nhap so thuc hop le.\n");
             }
         }
         nv.setHsl(hslMoi);
@@ -305,7 +305,7 @@ public class QuanLyNhanVien {
             ((NhanVienThuong) nv).setBplv(boPhanMoi);
         }
 
-        System.out.println("Cap nhat thong tin thanh cong.");
+        System.out.println("\nCap nhat thong tin thanh cong.");
     }
 
     public void XoaNhanVien() {
@@ -319,13 +319,13 @@ public class QuanLyNhanVien {
         }
 
         DanhSachNhanVien.remove(nv);
-        System.out.println("Xoa nhan vien thanh cong.");
+        System.out.println("\nXoa nhan vien thanh cong.");
     }
 
     public void MenuQuanLyNhanVien() {
         while (true) {
             System.out.println("\n|------------------------|");
-            System.out.println("| Quan ly nhan vien      |");
+            System.out.println("|   Quan ly nhan vien    |");
             System.out.println("|------------------------|");
             System.out.println("| 1. Them nhan vien      |");
             System.out.println("| 2. Hien thi danh sach  |");
@@ -334,7 +334,7 @@ public class QuanLyNhanVien {
             System.out.println("| 5. Sua nhan vien       |");
             System.out.println("| 6. Quay lai            |");
             System.out.println("|------------------------|");
-            System.out.print("Chon chuc nang: ");
+            System.out.print("\nChon chuc nang: ");
             int chon = sc.nextInt();
             sc.nextLine();
 
@@ -355,10 +355,10 @@ public class QuanLyNhanVien {
                     SuaNhanVien();
                     break;
                 case 6:
-                    System.out.println("Quay lai menu chinh.");
+                    System.out.println("\nQuay lai menu chinh.");
                     return;
                 default:
-                    System.out.println("Lua chon khong hop le.");
+                    System.out.println("\nLua chon khong hop le.");
             }
         }
     }
