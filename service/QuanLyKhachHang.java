@@ -15,12 +15,14 @@ public class QuanLyKhachHang {
         DanhSachKhachHang.add(new KhachHang("Le Thi D", "0812442111", "0000000004"));
         DanhSachKhachHang.add(new KhachHang("Dang Duc E", "0912551230", "0000000005"));
     }
-
+    
+    // PHƯƠNG THỨC THÊM KHÁCH HÀNG
     public void ThemKhachHang(KhachHang KhachHang) {
         DanhSachKhachHang.add(KhachHang);
         System.out.println("\nThem Khach Hang Thanh Cong.");
     }
-
+    
+    // HÀM THÊM KHÁCH HÀNG
     public void ThemKhachHang() {
         Scanner sc = new Scanner(System.in);
 
@@ -37,12 +39,12 @@ public class QuanLyKhachHang {
 
         String sdt;
         while (true) {
-            System.out.print("\nNhap so dien thoai: ");
+            System.out.print("Nhap so dien thoai: ");
             sdt = sc.nextLine();
             if (sdt.matches("0\\d{9}")) {
                 break;
             } else {
-                System.out.println("\nSo dien thoai khong hop le. Vui long nhap lai.");
+                System.out.println("\nSo dien thoai khong hop le. Vui long nhap lai.\n");
             }
         }
 
@@ -53,7 +55,7 @@ public class QuanLyKhachHang {
             if (cccd.matches("\\d{12}")) {
                 break;
             } else {
-                System.out.println("\nSo CCCD khong hop le. Vui long nhap lai.");
+                System.out.println("\nSo CCCD khong hop le. Vui long nhap lai.\n");
             }
         }
 
@@ -61,7 +63,8 @@ public class QuanLyKhachHang {
         DanhSachKhachHang.add(KhachHang);
         System.out.println("\nThem khach hang thanh cong.");
     }
-
+    
+    // PHƯƠNG THỨC KÌM KIẾM KHÁCH HÀNG THEO TÊN, SĐT HOẶC CCCD
     public ArrayList<KhachHang> TimKiemKhachHang(String key) {
         ArrayList<KhachHang> KetQua = new ArrayList<>();
         for (KhachHang kh : DanhSachKhachHang) {
@@ -73,7 +76,8 @@ public class QuanLyKhachHang {
         }
         return KetQua;
     }
-
+    
+    // HÀM SỬA THÔNG TIN KHÁCH HÀNG
     public void SuaKhachHang() {
         Scanner sc = new Scanner(System.in);
         System.out.print("\nNhap thong tin khach hang can sua (ten, SDT hoac CCCD): ");
@@ -113,7 +117,7 @@ public class QuanLyKhachHang {
         }
     }
 
-    // Hàm cập nhật thông tin khách hàng
+    // HÀM CẬP NHẬT THÔNG TIN KHÁCH HÀNG
     private void CapNhatThongTinKhachHang(Scanner sc, KhachHang kh) {
         System.out.print("\nNhap ten moi: ");
         String tenMoi = sc.nextLine();
@@ -129,6 +133,7 @@ public class QuanLyKhachHang {
         System.out.println("\nCap nhat thong tin thanh cong.");
     }
 
+    // HÀM XÓA KHÁCH HÀNG
     public void XoaKhachHang() {
         Scanner sc = new Scanner(System.in);
         System.out.print("\nNhap thong tin khach hang can xoa (ten, SDT hoac CCCD): ");
@@ -163,7 +168,7 @@ public class QuanLyKhachHang {
         System.out.println("\nXoa khach hang thanh cong.");
     }
     
-
+    // HÀM HIỂN THỊ DANH SÁCH KHÁCH HÀNG
     public void HienThiDanhSachKH() {
         if (DanhSachKhachHang.isEmpty()) {
             System.out.println("\nDanh sach khach hang trong.");
@@ -186,7 +191,7 @@ public class QuanLyKhachHang {
         }
     }
 
-    // Hiển thị menu quản lý khách hàng
+    // HÀM HIỂN THỊ MENU QUẢN LÝ KHÁCH HÀNG
     public void MenuQuanLyKhachHang() {
         Scanner sc = new Scanner(System.in);
         while (true) {
