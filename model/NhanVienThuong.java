@@ -19,7 +19,7 @@ public class NhanVienThuong extends NhanVien {
 
     @Override
     public double TinhLuong(double NgayCong) {
-        return getHsl() * 1000 * NgayCong;
+        return getHsl() * NgayCong;
     }
 
 
