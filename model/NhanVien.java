@@ -76,7 +76,7 @@ public abstract class NhanVien {
         this.hsl = hsl;
     }
 
-    public abstract double TinhLuong(double NgayCong);
+    public abstract double TinhLuong(int NgayCong);
 
     @Override
     public String toString() {
